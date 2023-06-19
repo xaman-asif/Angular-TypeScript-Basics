@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function NewTodoForm(props) {
+export const NewTodoForm: React.FC<{ addTodo: Function }> = (props) => {
   const [assigned, setAssigned] = useState("");
 
   const [description, setDescription] = useState("");
 
-  const assignedChange = (event) => {
+  const assignedChange = (event: any) => {
     console.log("assigned", event.target.value);
     setAssigned(event.target.value);
   };
@@ -56,6 +56,4 @@ function NewTodoForm(props) {
       </form>
     </div>
   );
-}
-
-export default NewTodoForm;
+};
