@@ -9,5 +9,5 @@ import { User } from './user';
 export class AppComponent {
   topics = ['Angular', 'React', 'Vue'];
 
-  userModel = new User('Rob', 'rob@test.com', 555, '', 'morning', true);
+  userModel = new User('', '', 1023456789, '', 'morning', false);
 }
