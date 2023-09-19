@@ -12,6 +12,9 @@
         name="userName"
         [(ngModel)]="userModel.name"
       />
+      <div *ngIf="name.invalid && name.touched">
+        <small>Name is required</small>
+      </div>
     </div>
 
     <div class="form-group">
@@ -26,6 +29,14 @@
         name="email"
         [(ngModel)]="userModel.email"
       />
+      <div *ngIf="userModel.email.length === 0 && email.touched">
+        <small>Email is required</small>
+      </div>
+      <div
+        *ngIf="userModel.email.length !== 0 && email.invalid && email.touched"
+      >
+        <small>Email is not valid</small>
+      </div>
     </div>
     <div class="form-group">
       <label>Phone</label>
@@ -33,11 +44,23 @@
         type="tel"
         #phone="ngModel"
         pattern="^\d{10}$"
+        required
         [class.is-invalid]="phone.invalid && phone.touched"
         class="form-control"
         name="phone"
         [(ngModel)]="userModel.phone"
       />
+      <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+        <small
+          class="text-danger"
+          *ngIf="phone.value.length < 10 && phone.value.length !== 0"
+        >
+          Phone number must be 10 digits
+        </small>
+        <small class="text-danger" *ngIf="phone.value.length === 0">
+          Phone number is required
+        </small>
+      </div>
     </div>
 
     <div class="form-group">
