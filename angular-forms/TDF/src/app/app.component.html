@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <h1>Bootcamp Enrollment Form</h1>
   <form #userForm="ngForm">
+    <p>Form is valid: {{ userForm.form.valid }}</p>
+
     <div class="form-group">
       <label>Name</label>
       <input
@@ -64,6 +66,7 @@
     </div>
 
     <div class="form-group">
+      <label>Topic</label>
       <select
         required
         (blur)="validateTopic(topic.value)"
@@ -117,6 +120,12 @@
       <label class="form-check-label"> Send me promotional offers </label>
     </div>
 
-    <button class="btn btn-primary" type="submit">Submit form</button>
+    <button
+      [disabled]="userForm.form.invalid || topicHasError"
+      class="btn btn-primary"
+      type="submit"
+    >
+      Submit form
+    </button>
   </form>
 </div>
