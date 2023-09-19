@@ -8,7 +8,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class AppComponent {
   registrationForm = new FormGroup({
-    userName: new FormControl('John Doe'),
+    userName: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
 
@@ -18,4 +18,18 @@ export class AppComponent {
       postalCode: new FormControl(''),
     })
   });
+
+  loadApiData() {
+    this.registrationForm.setValue({
+      userName: 'John',
+      password: '12345',
+      confirmPassword: '12345',
+
+      address: {
+        city: 'Dhaka',
+        state: 'Dhaka',
+        postalCode: '0000'
+      }
+    })
+  }
 }
