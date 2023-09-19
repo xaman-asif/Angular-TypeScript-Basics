@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <h1>Bootcamp Enrollment Form</h1>
-  <form #userForm="ngForm">
+  <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit()" novalidate>
     <p>Form is valid: {{ userForm.form.valid }}</p>
 
     <div class="form-group">
@@ -77,7 +77,6 @@
         name="topic"
         [(ngModel)]="userModel.topic"
       >
-        <option value="default">I am interested in</option>
         <option *ngFor="let topic of topics">
           {{ topic }}
         </option>
