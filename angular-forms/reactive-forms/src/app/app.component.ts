@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -7,17 +7,32 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  registrationForm = new FormGroup({
-    userName: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
+  constructor(private formBuilder: FormBuilder) {
+  }
 
-    address: new FormGroup({
-      city: new FormControl(''),
-      state: new FormControl(''),
-      postalCode: new FormControl(''),
+  registrationForm = this.formBuilder.group({
+    userName: [''],
+    password: [''],
+    confirmPassword: [''],
+
+    address: this.formBuilder.group({
+      city: [''],
+      state: [''],
+      postalCode: ['']
     })
-  });
+  })
+
+  // registrationForm = new FormGroup({
+  //   userName: new FormControl(''),
+  //   password: new FormControl(''),
+  //   confirmPassword: new FormControl(''),
+  //
+  //   address: new FormGroup({
+  //     city: new FormControl(''),
+  //     state: new FormControl(''),
+  //     postalCode: new FormControl(''),
+  //   })
+  // });
 
   loadApiData() {
     this.registrationForm.setValue({
