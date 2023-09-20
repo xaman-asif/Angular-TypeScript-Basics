@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ForbiddenNameValidator} from "./shared/user-name.validators";
+import {PasswordValidator} from "./shared/password.validator";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class AppComponent {
       state: [''],
       postalCode: ['']
     })
-  })
+  }, {validator: PasswordValidator})
 
   constructor(private formBuilder: FormBuilder) {
   }
