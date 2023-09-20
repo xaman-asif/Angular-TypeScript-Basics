@@ -25,6 +25,7 @@
 
     <div class="form-group">
       <label>Email</label>
+      <button (click)="addAlternateEmail()" class="btn btn-secondary btn-sm m-2" type="button">Add e-mail</button>
       <input
         [class.is-invalid]="registrationForm.get('email')?.errors?.['required'] && registrationForm.get('email')?.errors?.['invalid']"
         class="form-control"
@@ -33,6 +34,10 @@
       <small [class.d-none]="email?.valid && email?.untouched" class="text-danger">
         Email is required
       </small>
+      <div *ngFor="let email of alternateEmails.controls; let i=index" formArrayName="alternateEmails">
+        <input [formControlName]="i" class="form-control my-1" type="text">
+
+      </div>
     </div>
 
     <div class="form-check mb-3">
