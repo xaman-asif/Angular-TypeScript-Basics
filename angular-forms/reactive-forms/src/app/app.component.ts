@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ForbiddenNameValidator} from "./shared/user-name.validators";
 import {PasswordValidator} from "./shared/password.validator";
+import {RegistrationService} from "./registration.service";
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,10 @@ import {PasswordValidator} from "./shared/password.validator";
 })
 export class AppComponent implements OnInit {
   registrationForm: FormGroup = new FormGroup({})
+  // });
+  protected readonly onsubmit = onsubmit;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private _registrationService: RegistrationService) {
   }
 
   get userName() {
@@ -61,6 +64,17 @@ export class AppComponent implements OnInit {
     )
   }
 
+  // registrationForm = new FormGroup({
+  //   userName: new FormControl(''),
+  //   password: new FormControl(''),
+  //   confirmPassword: new FormControl(''),
+  //
+  //   address: new FormGroup({
+  //     city: new FormControl(''),
+  //     state: new FormControl(''),
+  //     postalCode: new FormControl(''),
+  //   })
+
   loadApiData() {
     this.registrationForm.setValue({
       userName: 'John',
@@ -75,15 +89,11 @@ export class AppComponent implements OnInit {
     })
   }
 
-  // registrationForm = new FormGroup({
-  //   userName: new FormControl(''),
-  //   password: new FormControl(''),
-  //   confirmPassword: new FormControl(''),
-  //
-  //   address: new FormGroup({
-  //     city: new FormControl(''),
-  //     state: new FormControl(''),
-  //     postalCode: new FormControl(''),
-  //   })
-  // });
+  onSubmit() {
+    console.log(this.registrationForm.value)
+    this._registrationService.register(this.registrationForm.value).subscribe(
+      response => console.log('Success!', response),
+      error => console.log('Error!', error)
+    )
+  }
 }
