@@ -1,2 +1,2 @@
 *.js
-typescript-basics\node_modules
+typescript-basics/node_modules/*
