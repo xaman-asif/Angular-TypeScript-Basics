@@ -26,6 +26,7 @@ export class RoomsComponent implements OnInit {
       amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
       roomPrice: 500,
       checkInTime: new Date(),
+      rating: 3.14,
     },
     {
       roomNumber: 2,
@@ -33,6 +34,7 @@ export class RoomsComponent implements OnInit {
       amenities: 'Fan, No Wi-Fi, Radio, Toilet, Food Order',
       roomPrice: 100,
       checkInTime: new Date(),
+      rating: 3.16,
     },
   ];
 
