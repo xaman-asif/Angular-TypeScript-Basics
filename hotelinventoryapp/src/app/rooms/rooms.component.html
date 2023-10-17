@@ -1,5 +1,4 @@
 <p>rooms.component.html</p>
-{{ hotelName }}
 
 <div
   [ngStyle]="{
@@ -11,12 +10,16 @@
 <div *ngIf="rooms.availableRooms > 0">
   <app-rooms-list
     [rooms]="roomList"
+    [hotelName]="hotelName"
     (selectedRoom)="selectRoom($event)"
   ></app-rooms-list>
 </div>
 <br />
 <div *ngIf="selectedRoom">
   {{selectedRoom | json}}
+</div>
+<div>
+  <button (click)="addRoom()">Add Room</button>
 </div>
 <br />
 <button (click)="onClick()">Toggle</button>

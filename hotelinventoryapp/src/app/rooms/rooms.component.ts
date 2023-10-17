@@ -46,9 +46,24 @@ export class RoomsComponent implements OnInit {
 
   onClick() {
     this.hideRooms = !this.hideRooms;
+    this.hotelName = 'Milton Hotel';
   }
 
   selectRoom(room: RoomList) {
     this.selectedRoom = room;
+  }
+
+  addRoom() {
+    const room: RoomList = {
+      roomNumber: 4,
+      roomPrice: 100,
+      checkInTime: new Date(),
+      rating: 3.15,
+      roomType: 'Super',
+      amenities: 'Washroom'
+    }
+
+    // this.roomList.push(room);
+    this.roomList = [...this.roomList, room];
   }
 }
