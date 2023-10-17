@@ -9,8 +9,6 @@ import { Room, RoomList } from './rooms';
 export class RoomsComponent implements OnInit {
   hotelName = 'Hilton Hotel';
 
-  numberOfRooms = 10;
-
   hideRooms = false;
 
   rooms: Room = {
@@ -19,30 +17,38 @@ export class RoomsComponent implements OnInit {
     bookedRooms: 5,
   };
 
-  roomList: RoomList[] = [
-    {
-      roomNumber: 1,
-      roomType: 'Duluxe Room',
-      amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-      roomPrice: 500,
-      checkInTime: new Date(),
-      rating: 3.14,
-    },
-    {
-      roomNumber: 2,
-      roomType: 'Gorib Room',
-      amenities: 'Fan, No Wi-Fi, Radio, Toilet, Food Order',
-      roomPrice: 100,
-      checkInTime: new Date(),
-      rating: 3.16,
-    },
-  ];
+  roomList: RoomList[] = [];
+
+  selectedRoom!: RoomList;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.roomList = [
+      {
+        roomNumber: 1,
+        roomType: 'Duluxe Room',
+        amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
+        roomPrice: 500,
+        checkInTime: new Date(),
+        rating: 3.14,
+      },
+      {
+        roomNumber: 2,
+        roomType: 'Gorib Room',
+        amenities: 'Fan, No Wi-Fi, Radio, Toilet, Food Order',
+        roomPrice: 100,
+        checkInTime: new Date(),
+        rating: 3.16,
+      },
+    ];
+  }
 
   onClick() {
     this.hideRooms = !this.hideRooms;
+  }
+
+  selectRoom(room: RoomList) {
+    this.selectedRoom = room;
   }
 }

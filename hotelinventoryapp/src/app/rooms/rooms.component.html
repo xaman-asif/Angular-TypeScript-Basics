@@ -2,38 +2,22 @@
 {{ hotelName }}
 
 <div
-  [ngStyle]="{ color: numberOfRooms > 0 ? 'steelblue' : 'red' }"
-  [innerText]="'NumberOfRooms:' + numberOfRooms"
+  [ngStyle]="{
+    color: rooms.totalRooms - rooms.bookedRooms > 0 ? 'steelblue' : 'red'
+  }"
+  [innerText]="'NumberOfRooms: ' + rooms.totalRooms"
 ></div>
 
+<div *ngIf="rooms.availableRooms > 0">
+  <app-rooms-list
+    [rooms]="roomList"
+    (selectedRoom)="selectRoom($event)"
+  ></app-rooms-list>
+</div>
+<br />
+<div *ngIf="selectedRoom">
+  {{selectedRoom | json}}
+</div>
+<br />
 <button (click)="onClick()">Toggle</button>
 <div [hidden]="hideRooms">Hide me! Hide me!</div>
-
-<br />
-<div *ngIf="rooms.availableRooms > 0">
-  Room List
-  <!-- {{ roomList | json }} -->
-  <table border="solid">
-    <tr>
-      <th>Index</th>
-      <th>Room number</th>
-      <th>Room type</th>
-      <th>Room price</th>
-      <th>Amenities</th>
-      <th>Checkin Time</th>
-      <th>Rating</th>
-    </tr>
-    <tr
-      [ngClass]="i % 2 === 0 ? 'even' : 'odd'"
-      *ngFor="let room of roomList; let i = index"
-    >
-      <td>{{ i | percent }}</td>
-      <td>{{ room.roomNumber }}</td>
-      <td>{{ room.roomType }}</td>
-      <td>{{ room.roomPrice | currency : "EUR" }}</td>
-      <td>{{ room.amenities | uppercase }}</td>
-      <td>{{ room.checkInTime | date : "short" }}</td>
-      <td>{{ room.rating | number }}</td>
-    </tr>
-  </table>
-</div>
