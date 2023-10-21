@@ -14,8 +14,11 @@ import {RoomList} from '../rooms';
   selector: 'app-rooms-list',
   templateUrl: './rooms-list.component.html',
   styleUrls: ['./rooms-list.component.scss'],
+  //only works when @input reference changes, not it's properties
+  //use typically in asynchronous call affects the @input data
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+//OnChanges is called when @input value or reference changes
 export class RoomsListComponent implements OnInit, OnChanges {
   @Input() rooms: RoomList[] = [];
   @Input() hotelName: string = '';

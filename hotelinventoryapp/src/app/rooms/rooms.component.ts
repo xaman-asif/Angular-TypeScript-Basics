@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, DoCheck, OnInit, ViewChild} from '@angular/core';
 import { Room, RoomList } from './rooms';
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit , DoCheck, AfterViewInit{
   hotelName = 'Hilton Hotel';
 
   hideRooms = false;
@@ -18,6 +19,8 @@ export class RoomsComponent implements OnInit {
   };
 
   roomList: RoomList[] = [];
+
+  @ViewChild(HeaderComponent, {static: true}) headerComponent!: HeaderComponent;
 
   selectedRoom!: RoomList;
 
@@ -62,8 +65,16 @@ export class RoomsComponent implements OnInit {
       roomType: 'Super',
       amenities: 'Washroom'
     }
-
+    // This below practice is not recommended as it will mutate the original array
     // this.roomList.push(room);
     this.roomList = [...this.roomList, room];
+  }
+
+  ngDoCheck(): void {
+    console.log('On check is called')
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.headerComponent);
   }
 }
