@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {RoomsComponent} from "./rooms/rooms.component";
 import {ButtonComponent} from "./button/button.component";
 
 @Component({
