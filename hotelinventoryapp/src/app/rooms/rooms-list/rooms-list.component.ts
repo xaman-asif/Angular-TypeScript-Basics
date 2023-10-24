@@ -35,6 +35,6 @@ export class RoomsListComponent implements OnInit, OnChanges {
     if (changes['hotelName'] && !changes['hotelName'].firstChange) {
       this.hotelName = this.hotelName.toUpperCase();
     }
-    console.log(changes);
+    // console.log(changes);
   }
 }

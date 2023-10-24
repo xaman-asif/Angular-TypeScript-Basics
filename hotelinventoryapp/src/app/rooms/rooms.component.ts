@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, DoCheck, OnInit, ViewChild} from '@angular/core';
 import { Room, RoomList } from './rooms';
 import {HeaderComponent} from "../header/header.component";
+import {RoomsService} from "./services/rooms.service";
 
 @Component({
   selector: 'app-rooms',
@@ -24,27 +25,12 @@ export class RoomsComponent implements OnInit , DoCheck, AfterViewInit{
 
   selectedRoom!: RoomList;
 
-  constructor() {}
+
+
+  constructor(private roomsService: RoomsService) {}
 
   ngOnInit(): void {
-    this.roomList = [
-      {
-        roomNumber: 1,
-        roomType: 'Duluxe Room',
-        amenities: 'Air Conditioner, Free Wi-Fi, TV, Bathroom, Kitchen',
-        roomPrice: 500,
-        checkInTime: new Date(),
-        rating: 3.14,
-      },
-      {
-        roomNumber: 2,
-        roomType: 'Gorib Room',
-        amenities: 'Fan, No Wi-Fi, Radio, Toilet, Food Order',
-        roomPrice: 100,
-        checkInTime: new Date(),
-        rating: 3.16,
-      },
-    ];
+    this.roomList = this.roomsService.getRooms();
   }
 
   onClick() {
@@ -71,10 +57,10 @@ export class RoomsComponent implements OnInit , DoCheck, AfterViewInit{
   }
 
   ngDoCheck(): void {
-    console.log('On check is called')
+    // console.log('On check is called')
   }
 
   ngAfterViewInit(): void {
-    console.log(this.headerComponent);
+    // console.log(this.headerComponent);
   }
 }
