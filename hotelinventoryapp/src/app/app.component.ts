@@ -1,5 +1,6 @@
-import {AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ButtonComponent} from "./button/button.component";
+import {localStorageToken} from "./localstorage.token";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import {ButtonComponent} from "./button/button.component";
   //   `,
   // ],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('editable_div', {read: ViewContainerRef}) vcr!: ViewContainerRef;
   // this hook is called once the view has been initialized
@@ -26,5 +27,13 @@ export class AppComponent implements AfterViewInit {
       const componentRef = this.vcr.createComponent(ButtonComponent);
       // This is how you can access the instance of the component
       componentRef.instance.buttonName = 'Dumb Button';
+  }
+
+  constructor(@Inject(localStorageToken) private var1: any) {
+    console.log(var1);
+  }
+
+  ngOnInit() {
+    // this.localStorage.setItem('name', 'John Doe');
   }
 }

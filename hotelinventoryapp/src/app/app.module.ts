@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './button/button.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
+import {APP_CONFIG, APP_CONFIG2, APP_SERVICE_CONFIG} from "./AppConfig/appconfig.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,10 @@ import { EmployeeComponent } from './employee/employee.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{
+    provide: APP_SERVICE_CONFIG,
+    useValue: APP_CONFIG2
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
