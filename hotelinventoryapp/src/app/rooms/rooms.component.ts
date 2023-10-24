@@ -30,7 +30,11 @@ export class RoomsComponent implements OnInit , DoCheck, AfterViewInit{
   constructor(private roomsService: RoomsService) {}
 
   ngOnInit(): void {
-    this.roomList = this.roomsService.getRooms();
+    this.roomList = this.roomsService.getRooms().subscribe((rooms: RoomList[]) => {
+      this.roomList = rooms;
+    })
+
+    console.log(this.roomList);
   }
 
   onClick() {
@@ -44,7 +48,7 @@ export class RoomsComponent implements OnInit , DoCheck, AfterViewInit{
 
   addRoom() {
     const room: RoomList = {
-      roomNumber: 4,
+      roomNumber: '4',
       roomPrice: 100,
       checkInTime: new Date(),
       rating: 3.15,

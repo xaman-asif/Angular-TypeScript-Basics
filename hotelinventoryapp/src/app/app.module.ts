@@ -11,6 +11,7 @@ import { ButtonComponent } from './button/button.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeeComponent } from './employee/employee.component';
 import {APP_CONFIG, APP_CONFIG2, APP_SERVICE_CONFIG} from "./AppConfig/appconfig.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {APP_CONFIG, APP_CONFIG2, APP_SERVICE_CONFIG} from "./AppConfig/appconfig
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [{
     provide: APP_SERVICE_CONFIG,
