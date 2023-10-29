@@ -1,14 +1,15 @@
 import {AfterViewInit, Component, DoCheck, OnInit, ViewChild} from '@angular/core';
-import { Room, RoomList } from './rooms';
+import {Room, RoomList} from './rooms';
 import {HeaderComponent} from "../header/header.component";
 import {RoomsService} from "./services/rooms.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
 })
-export class RoomsComponent implements OnInit , DoCheck, AfterViewInit{
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
   hotelName = 'Hilton Hotel';
 
   hideRooms = false;
@@ -21,15 +22,28 @@ export class RoomsComponent implements OnInit , DoCheck, AfterViewInit{
 
   roomList: RoomList[] = [];
 
+  stream = new Observable(observer => {
+    observer.next('user1');
+    observer.next('user2');
+    observer.next('user3');
+    observer.complete();
+  });
+
   @ViewChild(HeaderComponent, {static: true}) headerComponent!: HeaderComponent;
 
   selectedRoom!: RoomList;
 
 
-
-  constructor(private roomsService: RoomsService) {}
+  constructor(private roomsService: RoomsService) {
+  }
 
   ngOnInit(): void {
+    this.stream.subscribe({
+      next: (value) => console.log(value),
+      complete: () => console.log('Completed'),
+      error: (err) => console.log(err)
+    });
+
     this.roomList = this.roomsService.getRooms().subscribe((rooms: RoomList[]) => {
       this.roomList = rooms;
     })
