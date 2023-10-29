@@ -71,7 +71,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
     }
     // This below practice is not recommended as it will mutate the original array
     // this.roomList.push(room);
-    this.roomList = [...this.roomList, room];
+    // this.roomList = [...this.roomList, room];
+    this.roomsService.addRoom(room).subscribe((data) => {
+      this.roomList = data;
+    })
   }
 
   ngDoCheck(): void {
@@ -80,5 +83,26 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
 
   ngAfterViewInit(): void {
     // console.log(this.headerComponent);
+  }
+
+  editRoom() {
+    const room: RoomList = {
+      roomNumber: '3',
+      roomPrice: 100,
+      checkInTime: new Date(),
+      rating: 3.15,
+      roomType: 'Super',
+      amenities: 'Washroom'
+    }
+
+    this.roomsService.editRoom(room).subscribe((data) => {
+      this.roomList = data;
+    })
+  }
+
+  deleteRoom() {
+    this.roomsService.delete('3').subscribe((data) => {
+      this.roomList = data;
+    });
   }
 }
