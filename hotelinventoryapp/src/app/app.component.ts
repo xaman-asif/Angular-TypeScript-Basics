@@ -22,15 +22,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('editable_div', {read: ViewContainerRef}) vcr!: ViewContainerRef;
   // this hook is called once the view has been initialized
   // access and manipulate DOM elements here
-  // ex: initializing third party libraries or manipulating the dom
-  ngAfterViewInit() {
-      const componentRef = this.vcr.createComponent(ButtonComponent);
-      // This is how you can access the instance of the component
-      componentRef.instance.buttonName = 'Dumb Button';
-  }
 
   constructor(@Inject(localStorageToken) private var1: any) {
     console.log(var1);
+  }
+
+  // ex: initializing third party libraries or manipulating the dom
+  ngAfterViewInit() {
+    const componentRef = this.vcr.createComponent(ButtonComponent);
+    // This is how you can access the instance of the component
+    componentRef.instance.buttonName = 'Dumb Button';
   }
 
   ngOnInit() {
