@@ -1,28 +1,32 @@
-<p>room-list.component.ts starts</p>
-{{ hotelName }}
-<table>
-  <tr>
-    <th>Index</th>
-    <th>Room number</th>
-    <th>Room type</th>
-    <th>Room price</th>
-    <th>Amenities</th>
-    <th>Checkin Time</th>
-    <th>Rating</th>
-    <th>Action</th>
-  </tr>
-  <tr
-    [ngClass]="i % 2 === 0 ? 'even' : 'odd'"
-    *ngFor="let room of rooms; let i = index"
-  >
-    <td>{{ i | percent }}</td>
-    <td>{{ room.roomNumber }}</td>
-    <td>{{ room.roomType }}</td>
-    <td>{{ room.roomPrice | currency : "EUR" }}</td>
-    <td>{{ room.amenities | uppercase }}</td>
-    <td>{{ room.checkInTime | date : "short" }}</td>
-    <td>{{ room.rating | number }}</td>
-    <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
-  </tr>
+<p>This is from room list component</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Room Price</th>
+        <th>Amenities</th>
+        <th>Checking Time</th>
+        <th>Rating</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let room of rooms; let i = index" [ngClass]="i % 2 === 0 ? 'even' : 'odd'">
+        <td>{{ i | percent }}</td>
+        <td>{{ room.roomNumber }}</td>
+        <td>{{ room.roomType }}</td>
+        <td>{{ room.roomPrice }}</td>
+        <td>{{ room.amenities }}</td>
+        <td>{{ room.checkInTime | date }}</td>
+        <td>{{ room.rating }}</td>
+        <td>
+            <button (click)="selectRoom(room);" class="btn btn-primary">
+                <i>Select</i>
+            </button>
+        </td>
+    </tr>
+    </tbody>
 </table>
-<p>room-list.component.ts ends</p>

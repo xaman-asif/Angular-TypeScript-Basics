@@ -6,10 +6,12 @@ describe('RoomsListComponent', () => {
   let component: RoomsListComponent;
   let fixture: ComponentFixture<RoomsListComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [RoomsListComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [RoomsListComponent]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(RoomsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

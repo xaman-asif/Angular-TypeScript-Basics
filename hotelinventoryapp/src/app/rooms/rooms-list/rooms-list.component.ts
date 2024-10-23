@@ -1,40 +1,24 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
-import {RoomList} from '../rooms';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {DatePipe, NgClass, NgForOf, PercentPipe} from "@angular/common";
+import {RoomList} from "../rooms";
 
 @Component({
   selector: 'app-rooms-list',
+  standalone: true,
+  imports: [
+    DatePipe,
+    NgForOf,
+    PercentPipe,
+    NgClass
+  ],
   templateUrl: './rooms-list.component.html',
-  styleUrls: ['./rooms-list.component.scss'],
-  //only works when @input reference changes, not it's properties
-  //use typically in asynchronous call affects the @input data
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './rooms-list.component.scss'
 })
-//OnChanges is called when @input value or reference changes
-export class RoomsListComponent implements OnInit, OnChanges {
+export class RoomsListComponent {
   @Input() rooms: RoomList[] = [];
-  @Input() hotelName: string = '';
   @Output() selectedRoom = new EventEmitter<RoomList>();
-
-  constructor() {}
-  ngOnInit(): void {}
 
   selectRoom(room: RoomList) {
     this.selectedRoom.emit(room);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['hotelName'] && !changes['hotelName'].firstChange) {
-      this.hotelName = this.hotelName.toUpperCase();
-    }
-    // console.log(changes);
   }
 }
