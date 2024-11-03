@@ -1,1 +1,18 @@
-<app-rooms-list (selectedRoom)="roomSelected($event)" [rooms]="roomList"></app-rooms-list>
+<hinv-rooms-list (selectedRoom)="roomSelected($event)" [rooms]="roomList" [title]="title"></hinv-rooms-list>
+
+<div *ngIf="selectedRoom">
+    {{ selectedRoom | json }}
+</div>
+
+<div>
+    <button (click)="addRoom()">Add Room</button>
+</div>
+
+<div>
+    <button (click)="toggle()">Toggle</button>
+</div>
+
+
+<div *ngIf="hideRooms">
+    <p>This is hidden text!!!</p>
+</div>

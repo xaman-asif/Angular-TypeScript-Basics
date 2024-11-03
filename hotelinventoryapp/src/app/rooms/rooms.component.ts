@@ -1,24 +1,32 @@
 import {Component, OnInit} from '@angular/core';
 import {RoomList} from "./rooms";
-import {DatePipe, NgClass, NgForOf, PercentPipe} from "@angular/common";
+import {DatePipe, JsonPipe, NgClass, NgForOf, NgIf, PercentPipe} from "@angular/common";
 import {RoomsListComponent} from "./rooms-list/rooms-list.component";
 
 @Component({
-  selector: 'app-rooms',
+  selector: 'hinv-rooms',
   standalone: true,
   imports: [
     NgClass,
     NgForOf,
     PercentPipe,
     DatePipe,
-    RoomsListComponent
+    RoomsListComponent,
+    JsonPipe,
+    NgIf
   ],
   templateUrl: './rooms.component.html',
-  styleUrl: './rooms.component.scss'
+  styleUrl: './rooms.component.scss',
 })
 export class RoomsComponent implements OnInit {
 
   roomList: RoomList[] = [];
+
+  selectedRoom !: RoomList;
+
+  hideRooms = false;
+
+  title = 'Room List'
 
   ngOnInit(): void {
     this.roomList = [
@@ -66,6 +74,24 @@ export class RoomsComponent implements OnInit {
   }
 
   roomSelected(room: RoomList) {
-    console.log(room);
+    this.selectedRoom = room;
+  }
+
+  addRoom() {
+    const room: RoomList = {
+      roomNumber: '106',
+      roomType: 'Single',
+      roomPrice: 100,
+      amenities: 'TV, AC, WiFi',
+      checkInTime: new Date('2021-09-06'),
+      rating: 4
+    };
+    // this.roomList.push(room);
+    this.roomList = [...this.roomList, room]
+  }
+
+  toggle() {
+    this.hideRooms = !this.hideRooms;
+    this.title = "List of Room"
   }
 }
