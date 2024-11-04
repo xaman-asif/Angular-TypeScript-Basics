@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {RoomList} from "./rooms";
 import {DatePipe, JsonPipe, NgClass, NgForOf, NgIf, PercentPipe} from "@angular/common";
 import {RoomsListComponent} from "./rooms-list/rooms-list.component";
@@ -18,7 +18,7 @@ import {RoomsListComponent} from "./rooms-list/rooms-list.component";
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.scss',
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, DoCheck {
 
   roomList: RoomList[] = [];
 
@@ -93,5 +93,9 @@ export class RoomsComponent implements OnInit {
   toggle() {
     this.hideRooms = !this.hideRooms;
     this.title = "List of Room"
+  }
+
+  ngDoCheck(): void {
+    console.log('on changes is called');
   }
 }
