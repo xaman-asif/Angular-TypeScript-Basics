@@ -1,7 +1,8 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
 import {DatePipe, JsonPipe, NgClass, NgForOf, NgIf, PercentPipe} from "@angular/common";
 import {RoomsListComponent} from "./rooms-list/rooms-list.component";
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'hinv-rooms',
@@ -13,12 +14,13 @@ import {RoomsListComponent} from "./rooms-list/rooms-list.component";
     DatePipe,
     RoomsListComponent,
     JsonPipe,
-    NgIf
+    NgIf,
+    HeaderComponent
   ],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.scss',
 })
-export class RoomsComponent implements OnInit, DoCheck {
+export class RoomsComponent implements OnInit, AfterViewInit {
 
   roomList: RoomList[] = [];
 
@@ -27,6 +29,8 @@ export class RoomsComponent implements OnInit, DoCheck {
   hideRooms = false;
 
   title = 'Room List'
+
+  @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
 
   ngOnInit(): void {
     this.roomList = [
@@ -95,7 +99,7 @@ export class RoomsComponent implements OnInit, DoCheck {
     this.title = "List of Room"
   }
 
-  ngDoCheck(): void {
-    console.log('on changes is called');
+  ngAfterViewInit(): void {
+    console.log(this.headerComponent);
   }
 }
