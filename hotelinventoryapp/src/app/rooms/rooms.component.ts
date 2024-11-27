@@ -1,17 +1,14 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
-import {DatePipe, JsonPipe, NgClass, NgForOf, NgIf, PercentPipe} from "@angular/common";
+import {JsonPipe, NgIf} from "@angular/common";
 import {RoomsListComponent} from "./rooms-list/rooms-list.component";
 import {HeaderComponent} from "../header/header.component";
+import {RoomsService} from './services/rooms.service';
 
 @Component({
   selector: 'hinv-rooms',
   standalone: true,
   imports: [
-    NgClass,
-    NgForOf,
-    PercentPipe,
-    DatePipe,
     RoomsListComponent,
     JsonPipe,
     NgIf,
@@ -32,49 +29,12 @@ export class RoomsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
 
+  constructor(private roomService: RoomsService) {
+
+  }
+
   ngOnInit(): void {
-    this.roomList = [
-      {
-        roomNumber: '101',
-        roomType: 'Single',
-        roomPrice: 100,
-        amenities: 'TV, AC, WiFi',
-        checkInTime: new Date('2021-09-01'),
-        rating: 4
-      },
-      {
-        roomNumber: '102',
-        roomType: 'Double',
-        roomPrice: 200,
-        amenities: 'TV, AC, WiFi',
-        checkInTime: new Date('2021-09-02'),
-        rating: 5
-      },
-      {
-        roomNumber: '103',
-        roomType: 'Single',
-        roomPrice: 100,
-        amenities: 'TV, AC, WiFi',
-        checkInTime: new Date('2021-09-03'),
-        rating: 4
-      },
-      {
-        roomNumber: '104',
-        roomType: 'Double',
-        roomPrice: 200,
-        amenities: 'TV, AC, WiFi',
-        checkInTime: new Date('2021-09-04'),
-        rating: 5
-      },
-      {
-        roomNumber: '105',
-        roomType: 'Single',
-        roomPrice: 100,
-        amenities: 'TV, AC, WiFi',
-        checkInTime: new Date('2021-09-05'),
-        rating: 4
-      }
-    ];
+    this.roomList = this.roomService.getRooms();
   }
 
   roomSelected(room: RoomList) {
