@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
 import {RoomsComponent} from "./rooms/rooms.component";
+import {EmployeeComponent} from './employee/employee.component';
 
 @Component({
   selector: 'hinv-root',
   standalone: true,
-  imports: [RouterOutlet, RoomsComponent],
+  imports: [RoomsComponent, EmployeeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
