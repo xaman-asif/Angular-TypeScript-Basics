@@ -1,34 +1,18 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
-import {DatePipe, NgClass, NgForOf, PercentPipe} from "@angular/common";
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import {RoomList} from "../rooms";
 
 @Component({
   selector: 'hinv-rooms-list',
-  standalone: true,
-  imports: [
-    DatePipe,
-    NgForOf,
-    PercentPipe,
-    NgClass
-  ],
   templateUrl: './rooms-list.component.html',
-  styleUrl: './rooms-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
-  // changeDetection: ChangeDetectionStrategy.Default
+  styleUrls: ['./rooms-list.component.scss']
 })
-export class RoomsListComponent implements OnInit, OnChanges {
+export class RoomsListComponent implements OnInit {
   @Input() rooms: RoomList[] = [];
   @Input() title: String = '';
   @Output() selectedRoom = new EventEmitter<RoomList>();
+
+  constructor() {
+  }
 
   selectRoom(room: RoomList) {
     this.selectedRoom.emit(room);

@@ -1,23 +1,14 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
-import {JsonPipe, NgIf} from "@angular/common";
-import {RoomsListComponent} from "./rooms-list/rooms-list.component";
 import {HeaderComponent} from "../header/header.component";
-import {RoomsService} from './services/rooms.service';
+import {RoomsService} from "./services/rooms.service";
 
 @Component({
   selector: 'hinv-rooms',
-  standalone: true,
-  imports: [
-    RoomsListComponent,
-    JsonPipe,
-    NgIf,
-    HeaderComponent
-  ],
   templateUrl: './rooms.component.html',
-  styleUrl: './rooms.component.scss',
+  styleUrls: ['./rooms.component.scss']
 })
-export class RoomsComponent implements OnInit, AfterViewInit {
+export class RoomsComponent implements OnInit {
 
   roomList: RoomList[] = [];
 
@@ -62,4 +53,5 @@ export class RoomsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     console.log(this.headerComponent);
   }
+
 }

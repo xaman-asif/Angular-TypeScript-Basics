@@ -3,18 +3,18 @@
 <hinv-rooms-list (selectedRoom)="roomSelected($event)" [rooms]="roomList" [title]="title"></hinv-rooms-list>
 
 <div *ngIf="selectedRoom">
-    {{ selectedRoom | json }}
+  {{ selectedRoom | json }}
 </div>
 
 <div>
-    <button (click)="addRoom()">Add Room</button>
+  <button (click)="addRoom()">Add Room</button>
 </div>
 
 <div>
-    <button (click)="toggle()">Toggle</button>
+  <button (click)="toggle()">Toggle</button>
 </div>
 
 
 <div *ngIf="hideRooms">
-    <p>This is hidden text!!!</p>
+  <p>This is hidden text!!!</p>
 </div>
