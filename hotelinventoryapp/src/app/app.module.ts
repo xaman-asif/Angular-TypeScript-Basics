@@ -6,8 +6,8 @@ import {EmployeeComponent} from './employee/employee.component';
 import {HeaderComponent} from './header/header.component';
 import {RoomsComponent} from './rooms/rooms.component';
 import {RoomsListComponent} from './rooms/rooms-list/rooms-list.component';
-import {RoomsService} from "./rooms/services/rooms.service";
 import {APP_CONFIG, APP_SERVICE_CONFIG} from "./AppConfig/appconfig.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import {APP_CONFIG, APP_SERVICE_CONFIG} from "./AppConfig/appconfig.service";
     RoomsListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, HttpClientModule
   ],
   providers: [{
     provide: APP_SERVICE_CONFIG,
