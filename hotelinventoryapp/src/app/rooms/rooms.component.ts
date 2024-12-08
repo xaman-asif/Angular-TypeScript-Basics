@@ -25,7 +25,9 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.roomList = this.roomService.getRooms();
+    this.roomService.getRooms().subscribe(rooms => {
+      this.roomList = rooms;
+    })
   }
 
   roomSelected(room: RoomList) {
