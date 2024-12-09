@@ -60,7 +60,10 @@ export class RoomsComponent implements OnInit {
       rating: 4
     };
     // this.roomList.push(room);
-    this.roomList = [...this.roomList, room]
+    // this.roomList = [...this.roomList, room]
+    this.roomService.addRoom(room).subscribe((data) => {
+      this.roomList = [...this.roomList, data];
+    })
   }
 
   toggle() {

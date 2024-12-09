@@ -10,12 +10,16 @@ import {HttpClient} from "@angular/common/http";
 export class RoomsService {
 
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig,
-              private httpClient: HttpClient
+              private http: HttpClient
   ) {
     console.log(this.config.apiEndpoint);
   }
 
   getRooms() {
-    return this.httpClient.get<RoomList[]>('/api/rooms');
+    return this.http.get<RoomList[]>('/api/rooms');
+  }
+
+  addRoom(room: RoomList) {
+    return this.http.post<RoomList>('/api/rooms', room);
   }
 }
