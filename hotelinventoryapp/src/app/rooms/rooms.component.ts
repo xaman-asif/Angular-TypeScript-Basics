@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
 import {RoomsService} from "./services/rooms.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'hinv-rooms',
@@ -18,6 +19,14 @@ export class RoomsComponent implements OnInit {
 
   title = 'Room List'
 
+  stream = new Observable(observer => {
+    observer.next('user1');
+    observer.next('user2');
+    observer.next('user3');
+    observer.complete();
+    observer.error('error');
+  });
+
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
 
   constructor(private roomService: RoomsService) {
@@ -26,6 +35,13 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.roomService.getRooms().subscribe(rooms => {
+      // this.stream.subscribe((data) => console.log(data))
+      // this.stream.subscribe((data) => console.log(data))
+      this.stream.subscribe({
+        next: (value) => console.log(value),
+        complete: () => console.log("complete"),
+        error: (err) => console.log(err)
+      })
       this.roomList = rooms;
     })
   }

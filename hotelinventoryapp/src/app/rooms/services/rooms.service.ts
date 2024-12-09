@@ -9,8 +9,6 @@ import {HttpClient} from "@angular/common/http";
 })
 export class RoomsService {
 
-  roomList: RoomList[] = [];
-
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig,
               private httpClient: HttpClient
   ) {
