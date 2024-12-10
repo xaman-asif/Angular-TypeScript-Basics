@@ -62,7 +62,8 @@ export class RoomsComponent implements OnInit {
     // this.roomList.push(room);
     // this.roomList = [...this.roomList, room]
     this.roomService.addRoom(room).subscribe((data) => {
-      this.roomList = [...this.roomList, data];
+      this.roomList = data;
+      console.log(this.roomList);
     })
   }
 
@@ -75,4 +76,37 @@ export class RoomsComponent implements OnInit {
     console.log(this.headerComponent);
   }
 
+  editRoom() {
+    const room: RoomList = {
+      roomNumber: '3',
+      roomType: 'Single',
+      roomPrice: 100,
+      amenities: 'TV, AC, WiFi',
+      checkInTime: new Date('2021-09-06'),
+      rating: 4
+    };
+
+
+    this.roomService.editRoom(room).subscribe((data) => {
+      this.roomList = data;
+      console.log(this.roomList);
+    })
+  }
+
+  deleteRoom() {
+    const room: RoomList = {
+      roomNumber: '3',
+      roomType: 'Single',
+      roomPrice: 100,
+      amenities: 'TV, AC, WiFi',
+      checkInTime: new Date('2021-09-06'),
+      rating: 4
+    };
+
+
+    this.roomService.deleteRoom(room).subscribe((data) => {
+      this.roomList = data;
+      console.log(this.roomList);
+    })
+  }
 }
