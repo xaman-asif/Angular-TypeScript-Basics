@@ -3,6 +3,7 @@ import {RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
 import {RoomsService} from "./services/rooms.service";
 import {Observable} from "rxjs";
+import {HttpEventType} from "@angular/common/http";
 
 @Component({
   selector: 'hinv-rooms',
@@ -28,6 +29,7 @@ export class RoomsComponent implements OnInit {
   });
 
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
+  totalBytes = 0;
 
   constructor(private roomService: RoomsService) {
 
@@ -43,6 +45,29 @@ export class RoomsComponent implements OnInit {
         error: (err) => console.log(err)
       })
       this.roomList = rooms;
+    })
+
+
+    this.roomService.getPhotos().subscribe((event) => {
+      console.log(event);
+      switch (event.type) {
+        case HttpEventType.Sent: {
+          console.log('Request has been made!');
+          break;
+        }
+        case HttpEventType.ResponseHeader: {
+          console.log('Request success!');
+          break;
+        }
+        case HttpEventType.DownloadProgress: {
+          this.totalBytes += event.loaded;
+          break
+        }
+        case HttpEventType.Response: {
+          console.log(event.body)
+        }
+
+      }
     })
   }
 

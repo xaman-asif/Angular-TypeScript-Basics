@@ -2,6 +2,8 @@
 
 <hinv-rooms-list (selectedRoom)="roomSelected($event)" [rooms]="roomList" [title]="title"></hinv-rooms-list>
 
+<h1>{{ totalBytes }} loaded</h1>
+
 <div *ngIf="selectedRoom">
   {{ selectedRoom | json }}
 </div>

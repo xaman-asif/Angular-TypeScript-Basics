@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {RoomList} from '../rooms';
 import {APP_SERVICE_CONFIG} from "../../AppConfig/appconfig.service";
 import {AppConfig} from "../../AppConfig/appconfig.interface";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpRequest} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,13 @@ export class RoomsService {
 
   deleteRoom(room: RoomList) {
     return this.http.put<RoomList[]>(`/api/rooms/${room.roomNumber}`, room);
+  }
+
+  getPhotos() {
+    const request = new HttpRequest('GET', 'https://jsonplaceholder.typicode.com/photos', {
+      reportProgress: true
+    });
+
+    return this.http.request(request);
   }
 }
