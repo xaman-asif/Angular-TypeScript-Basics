@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
 import {RoomsService} from "./services/rooms.service";
-import {Observable, Subscription} from "rxjs";
+import {catchError, Observable, of, Subject, Subscription} from "rxjs";
 import {HttpEventType} from "@angular/common/http";
 
 @Component({
@@ -33,12 +33,20 @@ export class RoomsComponent implements OnInit, OnDestroy {
 
   // subscription !: Subscription;
 
+  error$ = new Subject<string>();
+  getError$ = this.error$.asObservable();
 
   constructor(private roomService: RoomsService) {
 
   }
 
-  rooms$ = this.roomService.getRooms$;
+  rooms$ = this.roomService.getRooms$.pipe(
+    catchError((err) => {
+      // console.log(err);
+      this.error$.next(err.message);
+      return of([]);
+    })
+  )
 
   ngOnInit(): void {
     // this.subscription = this.roomService.getRooms$.subscribe(rooms => {

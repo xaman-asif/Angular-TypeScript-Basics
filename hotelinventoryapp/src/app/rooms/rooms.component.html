@@ -1,7 +1,7 @@
 <!--<hinv-header></hinv-header>-->
 
-{{rooms$ | async | json}}
-
+<!--{{rooms$ | async | json}}-->
+{{getError$ | async}}
 <div *ngIf="rooms$ | async as rooms">
   <hinv-rooms-list (selectedRoom)="roomSelected($event)" [rooms]="rooms" [title]="title"></hinv-rooms-list>
 </div>
