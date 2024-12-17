@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
 import {RoomsService} from "./services/rooms.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {HttpEventType} from "@angular/common/http";
 
 @Component({
@@ -10,7 +10,7 @@ import {HttpEventType} from "@angular/common/http";
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss']
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, OnDestroy {
 
   roomList: RoomList[] = [];
 
@@ -31,21 +31,26 @@ export class RoomsComponent implements OnInit {
   @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
   totalBytes = 0;
 
+  // subscription !: Subscription;
+
+
   constructor(private roomService: RoomsService) {
 
   }
 
+  rooms$ = this.roomService.getRooms$;
+
   ngOnInit(): void {
-    this.roomService.getRooms$.subscribe(rooms => {
-      // this.stream.subscribe((data) => console.log(data))
-      // this.stream.subscribe((data) => console.log(data))
-      this.stream.subscribe({
-        next: (value) => console.log(value),
-        complete: () => console.log("complete"),
-        error: (err) => console.log(err)
-      })
-      this.roomList = rooms;
-    })
+    // this.subscription = this.roomService.getRooms$.subscribe(rooms => {
+    //   // this.stream.subscribe((data) => console.log(data))
+    //   // this.stream.subscribe((data) => console.log(data))
+    //   this.stream.subscribe({
+    //     next: (value) => console.log(value),
+    //     complete: () => console.log("complete"),
+    //     error: (err) => console.log(err)
+    //   })
+    //   this.roomList = rooms;
+    // })
 
 
     this.roomService.getPhotos().subscribe((event) => {
@@ -134,4 +139,11 @@ export class RoomsComponent implements OnInit {
       console.log(this.roomList);
     })
   }
+
+  ngOnDestroy(): void {
+    // if (this.subscription) {
+    //   this.subscription.unsubscribe();
+    // }
+  }
+
 }
