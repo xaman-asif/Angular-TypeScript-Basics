@@ -2,6 +2,7 @@
 
 <!--{{rooms$ | async | json}}-->
 {{getError$ | async}}
+<h1>Number of Rooms: {{roomsCount$ | async | json}}</h1>
 <div *ngIf="rooms$ | async as rooms">
   <hinv-rooms-list (selectedRoom)="roomSelected($event)" [rooms]="rooms" [title]="title"></hinv-rooms-list>
 </div>

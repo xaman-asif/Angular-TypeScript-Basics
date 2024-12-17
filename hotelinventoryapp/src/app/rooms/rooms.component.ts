@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
 import {RoomsService} from "./services/rooms.service";
-import {catchError, Observable, of, Subject, Subscription} from "rxjs";
+import {catchError, map, Observable, of, Subject, Subscription} from "rxjs";
 import {HttpEventType} from "@angular/common/http";
 
 @Component({
@@ -35,6 +35,10 @@ export class RoomsComponent implements OnInit, OnDestroy {
 
   error$ = new Subject<string>();
   getError$ = this.error$.asObservable();
+
+  roomsCount$ = this.roomService.getRooms$.pipe(
+    map((rooms) => rooms.length)
+  )
 
   constructor(private roomService: RoomsService) {
 
