@@ -18,6 +18,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "xaman-asif"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/xaman-asif/Angular-TypeScript-Basics.git",
+    "accountId": "c007fa11-a1c8-4844-8cfe-884e6d307982"
+  }
+}]]></component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -33,8 +45,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "dependency-injection",
+    "git-widget-placeholder": "HttpClient-and-RxJs",
     "last_opened_file_path": "/home/opi/WebstormProjects/Angular-TypeScript-Basics/hotelinventoryapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
@@ -49,7 +62,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
       </set>
     </attachedChunks>
   </component>
@@ -64,6 +77,7 @@
       <workItem from="1730652313693" duration="252000" />
       <workItem from="1730652568583" duration="230000" />
       <workItem from="1730652808863" duration="79000" />
+      <workItem from="1733919114571" duration="36000" />
     </task>
     <servers />
   </component>

@@ -36,7 +36,7 @@ export class RoomsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.roomService.getRooms().subscribe(rooms => {
+    this.roomService.getRooms$.subscribe(rooms => {
       // this.stream.subscribe((data) => console.log(data))
       // this.stream.subscribe((data) => console.log(data))
       this.stream.subscribe({
