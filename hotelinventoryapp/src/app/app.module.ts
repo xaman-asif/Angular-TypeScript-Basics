@@ -19,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { MatListModule } from '@angular/material/list';
     HeaderComponent,
     RoomsComponent,
     RoomsListComponent,
-    AppNavComponent
+    AppNavComponent,
+    NotFoundComponent,
+    RoomsBookingComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule
