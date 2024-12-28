@@ -13,10 +13,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="HttpClient-and-RxJs" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -47,8 +48,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "HttpClient-and-RxJs",
-    "last_opened_file_path": "/home/opi/WebstormProjects/Angular-TypeScript-Basics/hotelinventoryapp",
+    "git-widget-placeholder": "Routing-Basics",
+    "last_opened_file_path": "C:/Users/Asif Jaman/Documents/$Coding/Angular-TypeScript-Basics/hotelinventoryapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.stylelint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

@@ -10,6 +10,7 @@ import {APP_CONFIG, APP_SERVICE_CONFIG} from "./AppConfig/appconfig.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RequestInterceptor} from "./request.interceptor";
 import {InitService} from "./init.service";
+import {AppRoutingModule} from "./app-routing.module";
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import {InitService} from "./init.service";
     RoomsListComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule, AppRoutingModule
   ],
   providers: [{
     provide: APP_SERVICE_CONFIG,
