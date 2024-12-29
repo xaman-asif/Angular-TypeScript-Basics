@@ -1,26 +1,45 @@
-{{ room | json }}
+pristine {{ roomsForm.pristine | json }}
+<br>
+dirty {{ roomsForm.dirty | json }}
+<br>
+valid {{ roomsForm.valid | json }}
+<br>
+invalid {{ roomsForm.invalid | json }}
+<br>
+value {{ roomsForm.value | json }}
+<br>
 
-<form (ngSubmit)="addRoom()">
+<form #roomsForm="ngForm" (ngSubmit)="addRoom()">
   <div class="form-group">
-    <input [(ngModel)]="room.roomType" class="form-control" name="roomType" placeholder="Room Type"
-           type="text"
+    <input [(ngModel)]="room.roomType" class="form-control" name="roomType"
+           placeholder="Room Type" required type="text"
     >
   </div>
   <div class="form-group">
-    <input [(ngModel)]="room.roomPrice" class="form-control" name="roomPrice" placeholder="Price" type="number">
+    <input [(ngModel)]="room.roomPrice" class="form-control" name="roomPrice"
+           placeholder="Price" required
+           type="number">
+  </div>
+  <div>
   </div>
   <div class="form-group">
-    <input [(ngModel)]="room.amenities" class="form-control" name="amenities" placeholder="Amenities" type="text">
+    <input [(ngModel)]="room.amenities" class="form-control" name="amenities"
+           placeholder="Amenities" required
+           type="text">
+  </div>
+  <div>
   </div>
 
   <div class="form-group">
-    <input [(ngModel)]="room.checkInTime" class="form-control" name="checkInTime" placeholder="CheckIn Time"
+    <input [(ngModel)]="room.checkInTime" class="form-control" name="checkInTime"
+           placeholder="CheckIn Time" required
            type="date">
   </div>
   <div class="form-group">
-    <input [(ngModel)]="room.rating" class="form-control" name="rating" placeholder="Rating" type="number">
+    <input [(ngModel)]="room.rating" class="form-control" name="rating" placeholder="Rating"
+           required type="number">
   </div>
   <div>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button [disabled]="roomsForm.invalid" class="btn btn-primary" type="submit">Submit</button>
   </div>
 </form>
