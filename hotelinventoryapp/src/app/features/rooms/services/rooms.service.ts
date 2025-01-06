@@ -1,8 +1,8 @@
 import {Inject, Injectable} from '@angular/core';
 import {RoomList} from '../rooms';
-import {APP_SERVICE_CONFIG} from "../../AppConfig/appconfig.service";
-import {AppConfig} from "../../AppConfig/appconfig.interface";
-import {HttpClient, HttpHeaders, HttpRequest} from "@angular/common/http";
+import {APP_SERVICE_CONFIG} from "../../../core/services/appconfig.service";
+import {AppConfig} from "../../../core/models/appconfig.interface";
+import {HttpClient, HttpRequest} from "@angular/common/http";
 import {shareReplay} from "rxjs";
 
 @Injectable({
@@ -10,13 +10,13 @@ import {shareReplay} from "rxjs";
 })
 export class RoomsService {
 
+  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(shareReplay(1));
+
   constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig,
               private http: HttpClient
   ) {
     console.log(this.config.apiEndpoint);
   }
-
-  getRooms$ = this.http.get<RoomList[]>('/api/rooms').pipe(shareReplay(1));
 
   getRooms() {
     return this.http.get<RoomList[]>('/api/rooms');

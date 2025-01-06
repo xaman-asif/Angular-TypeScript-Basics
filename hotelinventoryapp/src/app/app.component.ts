@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {localStorageToken} from "./localstorage.token";
-import {sessionStorageToken} from "./sessionstorage.token";
-import {InitService} from "./init.service";
+import {localStorageToken} from "./core/models/localstorage.token";
+import {sessionStorageToken} from "./core/models/sessionstorage.token";
+import {InitService} from "./core/services/init.service";
 
 @Component({
   selector: 'hinv-root',

@@ -7,7 +7,7 @@ import {RoomList} from "../rooms";
   styleUrls: ['./rooms-list.component.scss']
 })
 export class RoomsListComponent implements OnInit {
-  @Input() rooms: RoomList[] | null= [];
+  @Input() rooms: RoomList[] | null = [];
   @Input() title: String = '';
   @Output() selectedRoom = new EventEmitter<RoomList>();
 

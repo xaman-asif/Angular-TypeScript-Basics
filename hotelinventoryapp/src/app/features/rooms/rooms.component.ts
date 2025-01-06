@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
 import {RoomsService} from "./services/rooms.service";
-import {catchError, map, Observable, of, Subject, Subscription} from "rxjs";
+import {catchError, map, Observable, of, Subject} from "rxjs";
 import {HttpEventType} from "@angular/common/http";
 
 @Component({
@@ -39,11 +39,6 @@ export class RoomsComponent implements OnInit, OnDestroy {
   roomsCount$ = this.roomService.getRooms$.pipe(
     map((rooms) => rooms.length)
   )
-
-  constructor(private roomService: RoomsService) {
-
-  }
-
   rooms$ = this.roomService.getRooms$.pipe(
     catchError((err) => {
       // console.log(err);
@@ -51,6 +46,10 @@ export class RoomsComponent implements OnInit, OnDestroy {
       return of([]);
     })
   )
+
+  constructor(private roomService: RoomsService) {
+
+  }
 
   ngOnInit(): void {
     // this.subscription = this.roomService.getRooms$.subscribe(rooms => {

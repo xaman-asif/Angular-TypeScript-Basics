@@ -2,30 +2,30 @@ import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {EmployeeComponent} from './employee/employee.component';
-import {HeaderComponent} from './header/header.component';
-import {RoomsComponent} from './rooms/rooms.component';
-import {RoomsListComponent} from './rooms/rooms-list/rooms-list.component';
-import {APP_CONFIG, APP_SERVICE_CONFIG} from "./AppConfig/appconfig.service";
+import {EmployeeComponent} from './features/employee/employee.component';
+import {HeaderComponent} from './features/header/header.component';
+import {RoomsComponent} from './features/rooms/rooms.component';
+import {RoomsListComponent} from './features/rooms/rooms-list/rooms-list.component';
+import {APP_CONFIG, APP_SERVICE_CONFIG} from "./core/services/appconfig.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {RequestInterceptor} from "./request.interceptor";
-import {InitService} from "./init.service";
+import {RequestInterceptor} from "./core/interceptors/request.interceptor";
+import {InitService} from "./core/services/init.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AppNavComponent} from './app-nav/app-nav.component';
+import {AppNavComponent} from './shared/components/app-nav/app-nav.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {RoomsBookingComponent} from './rooms/rooms-booking/rooms-booking.component';
-import {RoomsAddComponent} from './rooms/rooms-add/rooms-add.component';
+import {NotFoundComponent} from './features/not-found/not-found.component';
+import {RoomsBookingComponent} from './features/rooms/rooms-booking/rooms-booking.component';
+import {RoomsAddComponent} from './features/rooms/rooms-add/rooms-add.component';
 import {FormsModule} from "@angular/forms";
-import {LoginComponent} from './login/login.component';
-import {HoverDirective} from './directives/hover/hover.directive';
-import {EmailValidatorDirective} from './directives/email-validator/email-validator.directive';
+import {LoginComponent} from './features/login/login.component';
+import {HoverDirective} from './shared/directives/hover/hover.directive';
+import {EmailValidatorDirective} from './shared/directives/email-validator/email-validator.directive';
 
 
 @NgModule({
