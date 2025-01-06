@@ -23,6 +23,8 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {RoomsBookingComponent} from './rooms/rooms-booking/rooms-booking.component';
 import {RoomsAddComponent} from './rooms/rooms-add/rooms-add.component';
 import {FormsModule} from "@angular/forms";
+import { LoginComponent } from './login/login.component';
+import { HoverDirective } from './hover.directive';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {FormsModule} from "@angular/forms";
     AppNavComponent,
     NotFoundComponent,
     RoomsBookingComponent,
-    RoomsAddComponent
+    RoomsAddComponent,
+    LoginComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, FormsModule],
