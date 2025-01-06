@@ -23,8 +23,9 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {RoomsBookingComponent} from './rooms/rooms-booking/rooms-booking.component';
 import {RoomsAddComponent} from './rooms/rooms-add/rooms-add.component';
 import {FormsModule} from "@angular/forms";
-import { LoginComponent } from './login/login.component';
-import { HoverDirective } from './hover.directive';
+import {LoginComponent} from './login/login.component';
+import {HoverDirective} from './directives/hover/hover.directive';
+import {EmailValidatorDirective} from './directives/email-validator/email-validator.directive';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { HoverDirective } from './hover.directive';
     RoomsBookingComponent,
     RoomsAddComponent,
     LoginComponent,
-    HoverDirective
+    HoverDirective,
+    EmailValidatorDirective
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, FormsModule],
