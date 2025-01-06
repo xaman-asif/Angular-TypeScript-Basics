@@ -14,7 +14,7 @@
 </div>
 
 <div>
-    <button (click)="addRoom()">Add Room</button>
+    <button routerLink="add">Add Room</button>
 </div>
 
 <div>
@@ -33,3 +33,5 @@
 <div *ngIf="hideRooms">
     <p>This is hidden text!!!</p>
 </div>
+
+<router-outlet></router-outlet>
