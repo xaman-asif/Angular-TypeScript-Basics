@@ -3,9 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {EmployeeComponent} from './features/employee/employee.component';
-import {HeaderComponent} from './features/header/header.component';
-import {RoomsComponent} from './features/rooms/rooms.component';
-import {RoomsListComponent} from './features/rooms/rooms-list/rooms-list.component';
 import {APP_CONFIG, APP_SERVICE_CONFIG} from "./core/services/appconfig.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RequestInterceptor} from "./core/interceptors/request.interceptor";
@@ -20,30 +17,26 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {NotFoundComponent} from './features/not-found/not-found.component';
-import {RoomsBookingComponent} from './features/rooms/rooms-booking/rooms-booking.component';
-import {RoomsAddComponent} from './features/rooms/rooms-add/rooms-add.component';
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from './features/login/login.component';
 import {HoverDirective} from './shared/directives/hover/hover.directive';
 import {EmailValidatorDirective} from './shared/directives/email-validator/email-validator.directive';
+import {RoomsModule} from "./features/rooms/rooms.module";
+import {HeaderComponent} from "./features/header/header.component";
+import {HeaderModule} from "./features/header/header.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
-    HeaderComponent,
-    RoomsComponent,
-    RoomsListComponent,
     AppNavComponent,
     NotFoundComponent,
-    RoomsBookingComponent,
-    RoomsAddComponent,
     LoginComponent,
     HoverDirective,
     EmailValidatorDirective
   ],
-  imports: [
+  imports: [HeaderModule, RoomsModule,
     BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, FormsModule],
   providers: [{
     provide: APP_SERVICE_CONFIG,
@@ -58,6 +51,9 @@ import {EmailValidatorDirective} from './shared/directives/email-validator/email
     deps: [InitService],
     multi: true
   }],
+  exports: [
+    HeaderComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
