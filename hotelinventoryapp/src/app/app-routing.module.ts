@@ -14,6 +14,9 @@ const routes: Routes = [{
   path: 'rooms',
   loadChildren: () => import ('./features/rooms/rooms.module').then(m => m.RoomsModule)
 }, {
+  path: 'booking',
+  loadChildren: () => import('./features/booking/booking.module').then(m => m.BookingModule)
+}, {
   path: '**',
   component: NotFoundComponent
 }];
