@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {localStorageToken} from "./core/models/localstorage.token";
 import {sessionStorageToken} from "./core/models/sessionstorage.token";
 import {InitService} from "./core/services/init.service";
+import {RoomsService} from "./features/rooms/services/rooms.service";
 
 @Component({
   selector: 'hinv-root',
@@ -11,7 +12,7 @@ import {InitService} from "./core/services/init.service";
 export class AppComponent implements OnInit {
 
   constructor(@Inject(localStorageToken) private localStorage: Storage,
-              @Inject(sessionStorageToken) private sessionStorage: Storage, private initService: InitService) {
+              @Inject(sessionStorageToken) private sessionStorage: Storage, private initService: InitService, private roomService: RoomsService) {
     console.log(initService.config);
   }
 
