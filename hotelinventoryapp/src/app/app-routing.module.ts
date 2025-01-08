@@ -8,12 +8,11 @@ const routes: Routes = [{
   path: 'employee',
   component: EmployeeComponent
 }, {
-  path: '',
-  redirectTo: '/rooms',
-  pathMatch: 'full'
-}, {
   path: 'login',
   component: LoginComponent
+}, {
+  path: 'rooms',
+  loadChildren: () => import ('./features/rooms/rooms.module').then(m => m.RoomsModule)
 }, {
   path: '**',
   component: NotFoundComponent

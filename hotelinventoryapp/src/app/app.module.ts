@@ -21,7 +21,6 @@ import {FormsModule} from "@angular/forms";
 import {LoginComponent} from './features/login/login.component';
 import {HoverDirective} from './shared/directives/hover/hover.directive';
 import {EmailValidatorDirective} from './shared/directives/email-validator/email-validator.directive';
-import {RoomsModule} from "./features/rooms/rooms.module";
 import {HeaderComponent} from "./features/header/header.component";
 import {HeaderModule} from "./features/header/header.module";
 
@@ -36,7 +35,7 @@ import {HeaderModule} from "./features/header/header.module";
     HoverDirective,
     EmailValidatorDirective
   ],
-  imports: [HeaderModule, RoomsModule,
+  imports: [HeaderModule,
     BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, FormsModule],
   providers: [{
     provide: APP_SERVICE_CONFIG,
