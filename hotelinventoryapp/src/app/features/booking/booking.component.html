@@ -1,1 +1,83 @@
-<p>booking works!</p>
+{{bookingFrom.value | json}}
+
+<form [formGroup]="bookingFrom">
+  <mat-form-field class="example-form-field">
+    <mat-label>Room Id</mat-label>
+      <input formControlName="roomId" matInput placeholder="Room Id" type="text">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Guest Email</mat-label>
+    <input formControlName="guestEmail" matInput placeholder="Email" type="email">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Checkin Date</mat-label>
+    <input [matDatepicker]="checkinPicker" formControlName="checkinDate" matInput>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle [for]="checkinPicker" matIconSuffix></mat-datepicker-toggle>
+    <mat-datepicker #checkinPicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Checkout Date</mat-label>
+    <input [matDatepicker]="checkoutPicker" formControlName="checkoutDate" matInput>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle [for]="checkoutPicker" matIconSuffix></mat-datepicker-toggle>
+    <mat-datepicker #checkoutPicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Booking Status</mat-label>
+    <input formControlName="bookingStatus" matInput type="text">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Booking Amount</mat-label>
+    <input formControlName="bookingAmount" matInput type="text">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Booking Date</mat-label>
+    <input [matDatepicker]="bookingPicker" formControlName="bookingDate" matInput>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle [for]="bookingPicker" matIconSuffix></mat-datepicker-toggle>
+    <mat-datepicker #bookingPicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Mobile No</mat-label>
+    <input formControlName="mobileNumber" matInput type="text">
+  </mat-form-field>
+
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Guest Name</mat-label>
+    <input formControlName="guestName" matInput type="text">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Guest Address</mat-label>
+    <input formControlName="guestAddress" matInput type="text">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Guest City</mat-label>
+    <input formControlName="guestCity" matInput type="text">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Guest Country</mat-label>
+    <input formControlName="guestCountry" matInput type="text">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Guest Zip Code</mat-label>
+    <input formControlName="guestZipCode" matInput type="number">
+  </mat-form-field>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Guest Count</mat-label>
+    <input formControlName="guestCount" matInput type="number">
+  </mat-form-field>
+</form>
