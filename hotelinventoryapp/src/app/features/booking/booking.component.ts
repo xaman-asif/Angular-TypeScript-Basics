@@ -10,11 +10,12 @@ export class BookingComponent implements OnInit {
 
   bookingFrom !: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.bookingFrom = this.formBuilder.group({
-      roomId: [''],
+      roomId: new FormControl({value: '2', disabled: true}),
       guestEmail: [''],
       checkinDate: [''],
       checkoutDate: [''],
@@ -23,32 +24,23 @@ export class BookingComponent implements OnInit {
       bookingDate: [''],
       mobileNumber: [''],
       guestName: [''],
-      guestAddress: [''],
-      guestCity: [''],
-      guestCountry: [''],
-      guestZipCode: [''],
+      address: this.formBuilder.group({
+        addressLine1: [''],
+        addressLine2: [''],
+        city: [''],
+        state: [''],
+        country: [''],
+        zipCode: [''],
+      }),
       guestCount: [''],
       guestList: new FormControl('')
       //[''] is exactly same as new FormControl('')
       //Just a syntactic sugar
     })
   }
-}
 
-// export class Booking {
-//   roomId: string;
-//   guestEmail: string;
-//   checkinDate: Date;
-//   checkoutDate: Date;
-//   bookingStatus: string;
-//   bookingAmount: number;
-//   bookingDate: Date;
-//   mobileNumber: string;
-//   guestName: string;
-//   guestAddress: string;
-//   guestCity: string;
-//   guestCountry: string;
-//   guestZipCode: string;
-//   guestCount: number;
-//   guestList: Guest[];
-// }
+  addBooking() {
+    console.log(this.bookingFrom.getRawValue());
+    //getRawValue() will also fetch disabled form fields
+  }
+}
