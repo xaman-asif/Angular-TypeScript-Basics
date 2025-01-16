@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'hinv-booking',
@@ -11,6 +11,10 @@ export class BookingComponent implements OnInit {
   bookingFrom !: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
+  }
+
+  get guests() {
+    return this.bookingFrom.get('guests') as FormArray;
   }
 
   ngOnInit(): void {
@@ -33,14 +37,29 @@ export class BookingComponent implements OnInit {
         zipCode: [''],
       }),
       guestCount: [''],
-      guestList: new FormControl('')
+      guestList: new FormControl(''),
       //[''] is exactly same as new FormControl('')
       //Just a syntactic sugar
+      guests: this.formBuilder.array([
+        this.formBuilder.group({
+          guestName: [''],
+          age: [''],
+        })
+      ])
     })
   }
 
   addBooking() {
     console.log(this.bookingFrom.getRawValue());
     //getRawValue() will also fetch disabled form fields
+  }
+
+  addGuest() {
+    this.guests.push(
+      this.formBuilder.group({
+        guestName: [''],
+        age: new FormControl('')
+      })
+    )
   }
 }
