@@ -20,14 +20,13 @@ export class BookingComponent implements OnInit {
   ngOnInit(): void {
     this.bookingFrom = this.formBuilder.group({
       roomId: new FormControl({value: '2', disabled: true}),
-      guestEmail: [''],
+
       checkinDate: [''],
       checkoutDate: [''],
       bookingStatus: [''],
       bookingAmount: [''],
       bookingDate: [''],
       mobileNumber: [''],
-      guestName: [''],
       address: this.formBuilder.group({
         addressLine1: [''],
         addressLine2: [''],
@@ -36,13 +35,14 @@ export class BookingComponent implements OnInit {
         country: [''],
         zipCode: [''],
       }),
-      guestCount: [''],
+      guestCount: {value: '1', disabled: true},
       guestList: new FormControl(''),
       //[''] is exactly same as new FormControl('')
       //Just a syntactic sugar
       guests: this.formBuilder.array([
         this.formBuilder.group({
           guestName: [''],
+          guestEmail: [''],
           age: [''],
         })
       ])
@@ -58,8 +58,20 @@ export class BookingComponent implements OnInit {
     this.guests.push(
       this.formBuilder.group({
         guestName: [''],
+        guestEmail: [''],
         age: new FormControl('')
       })
     )
+
+    const guestCountControl = this.bookingFrom.get('guestCount');
+    guestCountControl?.setValue(this.guests.length);
+  }
+
+  addPassport() {
+    this.bookingFrom.addControl('passport', new FormControl(''));
+  }
+
+  removeGuest(i: number) {
+    this.guests.removeAt(i);
   }
 }

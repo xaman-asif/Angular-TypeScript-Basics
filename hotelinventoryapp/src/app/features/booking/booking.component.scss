@@ -14,3 +14,26 @@
 .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
   margin-left: 8px;
 }
+
+.booking-form {
+  max-width: 800px;
+  margin: auto;
+}
+
+.example-form-field {
+  width: 100%;
+}
+
+mat-card {
+  margin: 20px;
+}
+
+mat-card-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+}
