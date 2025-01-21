@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'hinv-booking',
@@ -19,9 +19,11 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookingFrom = this.formBuilder.group({
-      roomId: new FormControl({value: '2', disabled: true}),
+      roomId: new FormControl({value: '2', disabled: true}, {
+        validators: [Validators.required]
+      }),
 
-      checkinDate: [''],
+      checkinDate: ['', [Validators.required]],
       checkoutDate: [''],
       bookingStatus: [''],
       bookingAmount: [''],
@@ -45,7 +47,10 @@ export class BookingComponent implements OnInit {
           guestEmail: [''],
           age: [''],
         })
-      ])
+      ]),
+      tnc: new FormControl(false, {
+        validators: [Validators.requiredTrue]
+      })
     })
   }
 

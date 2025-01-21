@@ -12,25 +12,27 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
   declarations: [
     BookingComponent
   ],
-    imports: [
-        CommonModule,
-        BookingRoutingModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatButtonModule,
-        MatExpansionModule,
-        MatIconModule,
-        MatCardModule
-    ]
+  imports: [
+    CommonModule,
+    BookingRoutingModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatCardModule,
+    MatCheckboxModule
+  ]
 })
 export class BookingModule {
 }
