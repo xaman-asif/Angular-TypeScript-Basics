@@ -28,7 +28,7 @@ export class BookingComponent implements OnInit {
       bookingStatus: [''],
       bookingAmount: [''],
       bookingDate: [''],
-      mobileNumber: [''],
+      mobileNumber: ['', [Validators.required, Validators.maxLength(11)]],
       address: this.formBuilder.group({
         addressLine1: [''],
         addressLine2: [''],
@@ -43,7 +43,7 @@ export class BookingComponent implements OnInit {
       //Just a syntactic sugar
       guests: this.formBuilder.array([
         this.formBuilder.group({
-          guestName: ['', [Validators.required, Validators.minLength(5)]],
+          guestName: ['', [Validators.required, Validators.minLength(3)]],
           guestEmail: [''],
           age: [''],
         })

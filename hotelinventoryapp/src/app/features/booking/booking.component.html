@@ -24,6 +24,10 @@
         <input formControlName="mobileNumber" matInput type="text">
       </mat-form-field>
 
+      <mat-error *ngIf="bookingFrom.get('mobileNumber')?.hasError('maxlength')">
+        Mobile number should be maximum 11 characters!
+      </mat-error>
+
       <div formGroupName="address">
         <mat-accordion class="example-headers-align" multi>
           <mat-expansion-panel>
@@ -107,6 +111,16 @@
           <div [formGroupName]="i">
             <mat-form-field>
               <input formControlName="guestName" matInput placeholder="Guest Name" type="text">
+<!--              <mat-error *ngIf="guest.get('guestName')?.hasError('minlength')">-->
+<!--                Guest name should be minimum 3 characters!-->
+<!--              </mat-error>-->
+              <mat-error *ngIf = "bookingFrom.get(['guests', i, 'guestName'])?.hasError('required')">
+                Guest name is <strong>required.</strong>
+              </mat-error>
+
+              <mat-error *ngIf = "bookingFrom.get(['guests', i, 'guestName'])?.hasError('minlength')">
+                Guest name should be at least 3 characters.
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
               <input formControlName="age" matInput placeholder="Guest Age" type="number">
