@@ -43,7 +43,7 @@ export class BookingComponent implements OnInit {
       //Just a syntactic sugar
       guests: this.formBuilder.array([
         this.formBuilder.group({
-          guestName: [''],
+          guestName: ['', [Validators.required, Validators.minLength(5)]],
           guestEmail: [''],
           age: [''],
         })
@@ -57,6 +57,24 @@ export class BookingComponent implements OnInit {
   addBooking() {
     console.log(this.bookingFrom.getRawValue());
     //getRawValue() will also fetch disabled form fields
+    this.bookingFrom.reset({
+      checkinDate: '',
+      checkoutDate: '',
+      bookingStatus: '',
+      bookingAmount: '',
+      bookingDate: '',
+      mobileNumber: '',
+      address: {
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        country: '',
+        zipCode: '',
+      },
+      guestList: '',
+      tnc: ''
+    })
   }
 
   addGuest() {
