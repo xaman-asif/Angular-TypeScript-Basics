@@ -52,6 +52,8 @@ export class BookingComponent implements OnInit {
         validators: [Validators.requiredTrue]
       })
     })
+
+    this.getBookingDate();
   }
 
   addBooking() {
@@ -96,5 +98,33 @@ export class BookingComponent implements OnInit {
 
   removeGuest(i: number) {
     this.guests.removeAt(i);
+  }
+
+  getBookingDate() {
+    this.bookingFrom.setValue({
+      roomId: 3,
+      guestCount: 0,
+      checkinDate: new Date('10-Feb-2020'),
+      checkoutDate: '',
+      bookingStatus: '',
+      bookingAmount: '',
+      bookingDate: '',
+      mobileNumber: '',
+      address: {
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        country: '',
+        zipCode: '',
+      },
+      guestList: '',
+      tnc: '',
+      guests: [{
+        "guestName": "John Doe",
+        "guestEmail": "john@example.com",
+        "age": "25"
+      }]
+    })
   }
 }
