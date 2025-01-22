@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {BookingService} from "./booking.service";
 
 @Component({
   selector: 'hinv-booking',
@@ -10,7 +11,7 @@ export class BookingComponent implements OnInit {
 
   bookingFrom !: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private bookingService: BookingService) {
   }
 
   get guests() {
@@ -61,32 +62,52 @@ export class BookingComponent implements OnInit {
 
     this.getBookingDate();
 
-    this.bookingFrom.valueChanges.subscribe((data) => {
-      console.log(data);
-    })
+    //https://dev.to/kinginit/rxjs-mergemap-vs-switchmap-vs-concatmap-vs-exhaustmap-5gpg
+
+    // this.bookingFrom.valueChanges.subscribe((data) => {
+    //   this.bookingService.bookRoom(data).subscribe((data) => {
+    //     console.log(data);
+    //   });
+    // })
+
+    // this.bookingFrom.valueChanges.pipe(
+    //   mergeMap((data) => this.bookingService.bookRoom(data))
+    // ).subscribe((data) => console.log(data));
+
+    // this.bookingFrom.valueChanges.pipe(
+    //   switchMap((data) => this.bookingService.bookRoom(data))
+    // ).subscribe((data) => console.log(data));
+    //
+    // this.bookingFrom.valueChanges.pipe(
+    //   exhaustMap((data) => this.bookingService.bookRoom(data))
+    // ).subscribe((data) => console.log(data));
   }
 
   addBooking() {
     console.log(this.bookingFrom.getRawValue());
     //getRawValue() will also fetch disabled form fields
-    this.bookingFrom.reset({
-      checkinDate: '',
-      checkoutDate: '',
-      bookingStatus: '',
-      bookingAmount: '',
-      bookingDate: '',
-      mobileNumber: '',
-      address: {
-        addressLine1: '',
-        addressLine2: '',
-        city: '',
-        state: '',
-        country: '',
-        zipCode: '',
-      },
-      guestList: '',
-      tnc: ''
-    })
+    this.bookingService.bookRoom(this.bookingFrom.getRawValue()).subscribe((data) => {
+      console.log(data);
+    });
+
+    // this.bookingFrom.reset({
+    //   checkinDate: '',
+    //   checkoutDate: '',
+    //   bookingStatus: '',
+    //   bookingAmount: '',
+    //   bookingDate: '',
+    //   mobileNumber: '',
+    //   address: {
+    //     addressLine1: '',
+    //     addressLine2: '',
+    //     city: '',
+    //     state: '',
+    //     country: '',
+    //     zipCode: '',
+    //   },
+    //   guestList: '',
+    //   tnc: ''
+    // })
   }
 
   addGuest() {
