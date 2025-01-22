@@ -28,7 +28,10 @@ export class BookingComponent implements OnInit {
       bookingStatus: [''],
       bookingAmount: [''],
       bookingDate: [''],
-      mobileNumber: ['', [Validators.required, Validators.maxLength(11)]],
+      mobileNumber: new FormControl('', {
+        updateOn: 'blur',
+        validators: [Validators.required, Validators.maxLength(11)]
+      }),
       address: this.formBuilder.group({
         addressLine1: [''],
         addressLine2: [''],
@@ -44,7 +47,10 @@ export class BookingComponent implements OnInit {
       guests: this.formBuilder.array([
         this.formBuilder.group({
           guestName: ['', [Validators.required, Validators.minLength(3)]],
-          guestEmail: [''],
+          guestEmail: ['', {
+            updateOn: 'blur',
+            validators: [Validators.required, Validators.email]
+          }],
           age: [''],
         })
       ]),
@@ -54,6 +60,10 @@ export class BookingComponent implements OnInit {
     })
 
     this.getBookingDate();
+
+    this.bookingFrom.valueChanges.subscribe((data) => {
+      console.log(data);
+    })
   }
 
   addBooking() {
