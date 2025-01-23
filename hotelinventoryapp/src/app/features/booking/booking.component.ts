@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {BookingService} from "./booking.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'hinv-booking',
@@ -10,8 +11,9 @@ import {BookingService} from "./booking.service";
 export class BookingComponent implements OnInit {
 
   bookingFrom !: FormGroup;
+  id !: Number;
 
-  constructor(private formBuilder: FormBuilder, private bookingService: BookingService) {
+  constructor(private formBuilder: FormBuilder, private bookingService: BookingService, private route: ActivatedRoute) {
   }
 
   get guests() {
@@ -19,8 +21,10 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+
     this.bookingFrom = this.formBuilder.group({
-      roomId: new FormControl({value: '2', disabled: true}, {
+      roomId: new FormControl({value: this.id, disabled: true}, {
         validators: [Validators.required]
       }),
 
@@ -132,8 +136,7 @@ export class BookingComponent implements OnInit {
   }
 
   getBookingDate() {
-    this.bookingFrom.setValue({
-      roomId: 3,
+    this.bookingFrom.patchValue({
       guestCount: 0,
       checkinDate: new Date('10-Feb-2020'),
       checkoutDate: '',
