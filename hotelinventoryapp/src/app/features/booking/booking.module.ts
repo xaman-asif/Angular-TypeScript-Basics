@@ -1,24 +1,21 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-
-import {BookingRoutingModule} from './booking-routing.module';
-import {BookingComponent} from './booking.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatButtonModule} from "@angular/material/button";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MatIconModule} from "@angular/material/icon";
-import {MatCardModule} from "@angular/material/card";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { BookingRoutingModule } from './booking-routing.module';
+import { BookingComponent } from './booking.component';
 
 @NgModule({
-  declarations: [
-    BookingComponent
-  ],
+  declarations: [BookingComponent],
   imports: [
     CommonModule,
     BookingRoutingModule,
@@ -31,8 +28,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatExpansionModule,
     MatIconModule,
     MatCardModule,
-    MatCheckboxModule
-  ]
+    MatCheckboxModule,
+    MatSelectModule,
+  ],
 })
-export class BookingModule {
-}
+export class BookingModule {}
