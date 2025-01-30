@@ -23,6 +23,7 @@ import {HoverDirective} from './shared/directives/hover/hover.directive';
 import {EmailValidatorDirective} from './shared/directives/email-validator/email-validator.directive';
 import {HeaderComponent} from "./features/header/header.component";
 import {HeaderModule} from "./features/header/header.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import {HeaderModule} from "./features/header/header.module";
     EmailValidatorDirective
   ],
   imports: [HeaderModule,
-    BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, FormsModule],
+    BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, FormsModule, MatSnackBarModule],
   providers: [{
     provide: APP_SERVICE_CONFIG,
     useValue: APP_CONFIG
