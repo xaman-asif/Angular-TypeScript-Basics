@@ -9,6 +9,7 @@ import {RoomList} from "../rooms";
 export class RoomsListComponent implements OnInit {
   @Input() rooms: RoomList[] | null = [];
   @Input() title: String = '';
+  @Input() rating = 0;
   @Output() selectedRoom = new EventEmitter<RoomList>();
 
   constructor() {

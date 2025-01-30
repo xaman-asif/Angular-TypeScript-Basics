@@ -2,9 +2,10 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RoomList} from "./rooms";
 import {HeaderComponent} from "../header/header.component";
 import {RoomsService} from "./services/rooms.service";
-import {catchError, map, Observable, of, Subject} from "rxjs";
+import {map, Observable, Subject} from "rxjs";
 import {HttpEventType} from "@angular/common/http";
 import {ConfigService} from "../../core/services/config.service";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'hinv-rooms',
@@ -19,7 +20,9 @@ export class RoomsComponent implements OnInit, OnDestroy {
 
   hideRooms = false;
 
-  title = 'Room List'
+  title = 'Room List';
+
+  rating = new FormControl(0);
 
   stream = new Observable(observer => {
     observer.next('user1');
@@ -40,30 +43,29 @@ export class RoomsComponent implements OnInit, OnDestroy {
   roomsCount$ = this.roomService.getRooms$.pipe(
     map((rooms) => rooms.length)
   )
-  rooms$ = this.roomService.getRooms$.pipe(
-    catchError((err) => {
-      // console.log(err);
-      this.error$.next(err.message);
-      return of([]);
-    })
-  )
+  // rooms$ = this.roomService.getRooms$.pipe(
+  //   catchError((err) => {
+  //     // console.log(err);
+  //     this.error$.next(err.message);
+  //     return of([]);
+  //   })
+  // )
 
   constructor(private roomService: RoomsService, private configService: ConfigService) {
 
   }
 
   ngOnInit(): void {
-    // this.subscription = this.roomService.getRooms$.subscribe(rooms => {
-    //   // this.stream.subscribe((data) => console.log(data))
-    //   // this.stream.subscribe((data) => console.log(data))
-    //   this.stream.subscribe({
-    //     next: (value) => console.log(value),
-    //     complete: () => console.log("complete"),
-    //     error: (err) => console.log(err)
-    //   })
-    //   this.roomList = rooms;
-    // })
-
+    this.roomService.getRooms$.subscribe(rooms => {
+      // this.stream.subscribe((data) => console.log(data))
+      // this.stream.subscribe((data) => console.log(data))
+      this.stream.subscribe({
+        next: (value) => console.log(value),
+        complete: () => console.log("complete"),
+        error: (err) => console.log(err)
+      })
+      this.roomList = rooms;
+    })
 
     this.roomService.getPhotos().subscribe((event) => {
       console.log(event);

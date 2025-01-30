@@ -3,8 +3,8 @@
 <!--{{rooms$ | async | json}}-->
 <!--{{ getError$ | async }}-->
 <!--<h1>Number of Rooms: {{ roomsCount$ | async | json }}</h1>-->
-<div *ngIf="rooms$ | async as rooms">
-  <hinv-rooms-list (selectedRoom)="roomSelected($event)" [rooms]="rooms" [title]="title"></hinv-rooms-list>
+<div *ngIf="this.roomList as rooms">
+  <hinv-rooms-list (selectedRoom)="roomSelected($event)" [rating]="rating.value" [rooms]="rooms" [title]="title"></hinv-rooms-list>
 </div>
 
 <!--<h1>{{ totalBytes }} loaded</h1>-->
@@ -15,6 +15,12 @@
 
 <div>
   <button routerLink="add">Add Room</button>
+</div>
+
+{{rating.value | json}}
+
+<div>
+  <input [formControl]="rating" class="form-control" placeholder="Rating" type="number">
 </div>
 
 <!--<div>-->

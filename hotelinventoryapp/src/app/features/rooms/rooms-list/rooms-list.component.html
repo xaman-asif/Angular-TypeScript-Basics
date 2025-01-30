@@ -14,7 +14,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let room of rooms; let i = index" [ngClass]="i % 2 === 0 ? 'even' : 'odd'">
+  <tr *ngFor="let room of (rooms ?? []) | filter: rating; let i = index" [ngClass]="i % 2 === 0 ? 'even' : 'odd'">
     <td>{{ i | percent }}</td>
     <td>{{ room.roomNumber }}</td>
     <td>{{ room.roomType }}</td>
