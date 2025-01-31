@@ -10,7 +10,7 @@ export class CommentService {
 
   getComments() {
     return this.http.get<Comment[]>(
-      'https://jsonplaceholder.typicode.com/commentsyxd'
+      'https://jsonplaceholder.typicode.com/comments'
     );
   }
 }
