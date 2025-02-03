@@ -1,11 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-app-nav',
-  imports: [MatListModule],
   templateUrl: './app-nav.component.html',
   styleUrls: ['./app-nav.component.scss'],
+  imports: [RouterModule, CommonModule],
 })
 export class AppNavComponent {}

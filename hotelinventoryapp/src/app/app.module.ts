@@ -6,6 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppNavComponent } from './app-nav/app-nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {
+  APP_CONFIG,
+  APP_SERVICE_CONFIG,
+} from './services/AppConfig/appconfig.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +20,12 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppNavComponent,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_SERVICE_CONFIG,
+      useValue: APP_CONFIG,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
