@@ -9,6 +9,13 @@ const routes: Routes = [
         './features/dependency-injection/dependency-injection.module'
       ).then((m) => m.DependencyInjectionModule),
   },
+  {
+    path: 'component-communication',
+    loadChildren: () =>
+      import(
+        './features/component-communication/component-communication.module'
+      ).then((m) => m.ComponentCommunicationModule),
+  },
 ];
 
 @NgModule({
